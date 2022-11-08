@@ -1,4 +1,4 @@
-const { SyncHook } = require("tapable"); //这是一个同步钩子
+const SyncHook = require("../my/SyncHook"); //这是一个同步钩子
 
 //第一步：实例化钩子函数，可以在这里定义形参
 const syncHook = new SyncHook(["author"]);

@@ -1,4 +1,4 @@
-const { AsyncSeriesHook } = require("tapable");
+const AsyncSeriesHook = require("../node_modules/tapable/lib/AsyncSeriesHook");
 
 const hook = new AsyncSeriesHook(["param1", "param2"]); //先实例化，并定义回调函数的形参
 console.time("time");
