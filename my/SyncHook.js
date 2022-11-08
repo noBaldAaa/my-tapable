@@ -1,17 +1,17 @@
-const _call = function (args) {
-  this.call = this.compile({
-    taps: this.taps, //tapInfo的数组 [{name,fn,type}]
-    args: this.args, //形参数组
-    type: "sync",
-  }); //动态创建一个call方法 这叫懒编译或者动态编译，最开始没有，用的时候才去创建执行
-  return this.call(args);
-};
-
 class SyncHook {
   constructor(args) {
     this.args = Array.isArray(args) ? args : []; //形参列表
     this.taps = []; //这是一个数组，用来存放我们的回调函数
-    this.call = _call;
+    // this.call = _call;
+  }
+
+  call(...args) {
+    this._call = this.compile({
+      taps: this.taps, //tapInfo的数组 [{name,fn,type}]
+      args: this.args, //形参数组
+      type: "sync",
+    }); //动态创建一个call方法 这叫懒编译或者动态编译，最开始没有，用的时候才去创建执行
+    return this._call(...args);
   }
 
   tap(option, fn) {
