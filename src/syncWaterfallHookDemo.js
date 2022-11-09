@@ -4,7 +4,7 @@
 
 const { SyncWaterfallHook } = require("tapable");
 
-const hook = new SyncWaterfallHook(["param1", "param2"]); //先实例化，并定义回调函数的形参
+const hook = new SyncWaterfallHook(["author", "age"]); //先实例化，并定义回调函数的形参
 
 //通过tap函数注册事件
 hook.tap("测试1", (param1, param2) => {
@@ -21,4 +21,4 @@ hook.tap("测试3", (param1, param2) => {
 });
 
 //通过call方法触发事件
-hook.call("hello", "world");
+hook.call("不要秃头啊", "99");

@@ -2,9 +2,9 @@
  * SyncBailHook是一个保险类型的同步Hook，意思是只要其中一个有返回了，后面的就不执行了
  */
 
-const SyncBailHook = require("../node_modules/tapable/lib/SyncBailHook");
+const { SyncBailHook } = require("tapable");
 
-const hook = new SyncBailHook(["param1", "param2"]); //先实例化，并定义回调函数的形参
+const hook = new SyncBailHook(["author", "age"]); //先实例化，并定义回调函数的形参
 
 //通过tap函数注册事件
 hook.tap("测试1", (param1, param2) => {
@@ -22,13 +22,4 @@ hook.tap("测试3", (param1, param2) => {
 });
 
 //通过call方法触发事件
-hook.call("hello", "world");
-
-function anonymous(param1, param2) {
-  let fn0 = this.taps[0].fn;
-  fn0(param1, param2);
-
-  let fn1 = this.taps[1].fn;
-  fn1(param1, param2);
-}
-anonymous("实参1", "实参2");
+hook.call("不要秃头啊", "99");
